@@ -2,6 +2,7 @@
 #include <compare>
 #include <string>
 #include <vector>
+#include <map>
 #include <algorithm>
 #include <chrono>
 #include <fstream>
@@ -222,64 +223,47 @@ int main() {
     std::vector<double> heapSortTime;
     std::vector<double> stdSortTime;
     // 100 10090 20080 30070 40060 50050 60040 70030 80020 90010 100000 
-    std::vector<int> countRecords{100};//, 10090, 20080, 30070, 40060, 50050, 60040, 70030, 80020, 90010, 100000 };
+    std::vector<double> countRecords{100, 10090, 20080, 30070, 40060, 50050, 60040, 70030, 80020, 90010, 100000 };
     for (auto&count : countRecords) {
-        const std::string fileName("data_" + std::to_string(count));
+        std::cout << "Start sorting n=" << int(count) << std::endl;
+        const std::string fileName("data_" + std::to_string(int(count)));
         const std::string outputDir("../output/");
         const std::string dataDir("../data/");
         SoldiersVector data = ReadSoldiersFromCSV(dataDir + fileName + ".csv");
         std::unique_ptr<SoldiersVector> pSortedVec = std::make_unique<SoldiersVector>();
 
-        // auto start = std::chrono::high_resolution_clock::now();
-        // *pSortedVec = SelectSort(data);
-        // auto end = std::chrono::high_resolution_clock::now();
-        // std::chrono::duration<double> elapsed = end - start;
-        // selectSortTime.emplace_back(elapsed.count());
-        // WriteSoldiersToFormattedFile(*pSortedVec, outputDir + "select_" + fileName + ".txt");
         RecordSortTimeAndWriteInFile(SelectSort<Soldier>, data, selectSortTime, outputDir + "select_" + fileName + ".txt");
         
-        // auto start = std::chrono::high_resolution_clock::now();
-        // *pSortedVec = InsertSort(data);
-        // auto end = std::chrono::high_resolution_clock::now();
-        // std::chrono::duration<double> elapsed = end - start;
-        // insertSortTime.emplace_back(elapsed.count());
-        // WriteSoldiersToFormattedFile(*pSortedVec, outputDir + "insert_" + fileName + ".txt");
         RecordSortTimeAndWriteInFile(InsertSort<Soldier>, data, insertSortTime, outputDir + "insert_" + fileName + ".txt");
         
-        // auto start = std::chrono::high_resolution_clock::now();
-        // *pSortedVec = HeapSort(data);
-        // auto end = std::chrono::high_resolution_clock::now();
-        // std::chrono::duration<double> elapsed = end - start;
-        // heapSortTime.emplace_back(elapsed.count());
-        // WriteSoldiersToFormattedFile(*pSortedVec, outputDir + "heap_" + fileName + ".txt");
         RecordSortTimeAndWriteInFile(HeapSort<Soldier>, data, heapSortTime, outputDir + "heap_" + fileName + ".txt");
         
-        // start = std::chrono::high_resolution_clock::now();
-        // std::sort(data.begin(), data.end());
-        // end = std::chrono::high_resolution_clock::now();
-        // elapsed = end - start;
-        // heapSortTime.emplace_back(elapsed.count());
-        // WriteSoldiersToFormattedFile(data, outputDir + "std_" + fileName + ".txt");
         auto stdSort = [](SoldiersVector vec) -> SoldiersVector {
             std::sort(vec.begin(), vec.end());
             return vec;
         };
+
         RecordSortTimeAndWriteInFile(std::move(stdSort), data, stdSortTime, outputDir + "std_" + fileName + ".txt");
 
     }
-    OutTime(selectSortTime);
-    OutTime(insertSortTime);
-    OutTime(heapSortTime);
-    OutTime(stdSortTime);
-    std::vector<double> x = {1, 2, 3, 4};
-    std::vector<double> y = {1, 4, 9, 16};
 
-    // Построение графика
-    plt::plot(x, y);
-    // plt::plot(selectSortTime, insertSortTime);
-    plt::title("Пример графика");
-    plt::xlabel("Ось X");
-    plt::ylabel("Ось Y");
+    plt::figure_size(1200, 800);
+
+    std::map<std::string, std::string> labelSelect = {{"label", "Select Sort"}};
+    std::map<std::string, std::string> labelInsert = {{"label", "Insert Sort"}};
+    std::map<std::string, std::string> labelHeap = {{"label", "Heap Sort"}};
+    std::map<std::string, std::string> labelStd = {{"label", "Std Sort"}};
+
+    plt::plot(countRecords, selectSortTime, labelSelect);
+    plt::plot(countRecords, insertSortTime, labelInsert);
+    plt::plot(countRecords, heapSortTime, labelHeap);
+    plt::plot(countRecords, stdSortTime, labelStd);
+
+    plt::title("Compare sort time");
+    plt::xlabel("Count elements");
+    plt::ylabel("Time in ms");
+    plt::legend();
+
     plt::show();
 
     return 0;
