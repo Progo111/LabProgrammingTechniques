@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sorting algorithms: Файл /home/iivanov/LabProgrammingTechniques/sorts_algorithm/main.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Sorting algorithms
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Классы</a> &#124;
+<a href="#typedef-members">Определения типов</a> &#124;
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл /home/iivanov/LabProgrammingTechniques/sorts_algorithm/main.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Программа для сортировки солдат различными методами и измерения времени сортировки.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;compare&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;iomanip&gt;</code><br />
+<code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;functional&gt;</code><br />
+<code>#include &quot;matplotlib-cpp/matplotlibcpp.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для main.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#a_2home_2iivanov_2LabProgrammingTechniques_2sorts__algorithm_2main_8cpp" alt=""/></div>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSoldier.html">Soldier</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Класс, представляющий солдата.  <a href="classSoldier.html#details">Подробнее...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Определения типов</h2></td></tr>
+<tr class="memitem:a73ff58f0a46ec99d2d99843380061836"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="classSoldier.html">Soldier</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a73ff58f0a46ec99d2d99843380061836">SoldiersVector</a></td></tr>
+<tr class="separator:a73ff58f0a46ec99d2d99843380061836"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a5780e7f0be68cb56802cdcae99316d51"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a5780e7f0be68cb56802cdcae99316d51"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a5780e7f0be68cb56802cdcae99316d51">SelectSort</a> (std::vector&lt; T &gt; arr)</td></tr>
+<tr class="memdesc:a5780e7f0be68cb56802cdcae99316d51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сортировка выбором.  <a href="main_8cpp.html#a5780e7f0be68cb56802cdcae99316d51">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5780e7f0be68cb56802cdcae99316d51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8be32c66763d07cd60cdefee8eb6f01"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac8be32c66763d07cd60cdefee8eb6f01"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ac8be32c66763d07cd60cdefee8eb6f01">InsertSort</a> (std::vector&lt; T &gt; arr)</td></tr>
+<tr class="memdesc:ac8be32c66763d07cd60cdefee8eb6f01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сортировка вставками.  <a href="main_8cpp.html#ac8be32c66763d07cd60cdefee8eb6f01">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac8be32c66763d07cd60cdefee8eb6f01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b49b9c018cfae28889a80998a43d456"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a4b49b9c018cfae28889a80998a43d456"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a4b49b9c018cfae28889a80998a43d456">Heapify</a> (std::vector&lt; T &gt; &amp;arr, size_t size, long index)</td></tr>
+<tr class="separator:a4b49b9c018cfae28889a80998a43d456"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b9b016d767fa1699e3a7af907a3dfc7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a4b9b016d767fa1699e3a7af907a3dfc7"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a4b9b016d767fa1699e3a7af907a3dfc7">HeapSort</a> (std::vector&lt; T &gt; arr)</td></tr>
+<tr class="memdesc:a4b9b016d767fa1699e3a7af907a3dfc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Пирамидальная (кучей) сортировка.  <a href="main_8cpp.html#a4b9b016d767fa1699e3a7af907a3dfc7">Подробнее...</a><br /></td></tr>
+<tr class="separator:a4b9b016d767fa1699e3a7af907a3dfc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb99701acc11d867cad44972b956ace3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="main_8cpp.html#a73ff58f0a46ec99d2d99843380061836">SoldiersVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aeb99701acc11d867cad44972b956ace3">ReadSoldiersFromCSV</a> (const std::string &amp;filename)</td></tr>
+<tr class="memdesc:aeb99701acc11d867cad44972b956ace3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает данные о солдатах из CSV-файла.  <a href="main_8cpp.html#aeb99701acc11d867cad44972b956ace3">Подробнее...</a><br /></td></tr>
+<tr class="separator:aeb99701acc11d867cad44972b956ace3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cd92ccbb3b11298937d8ace19f894c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a8cd92ccbb3b11298937d8ace19f894c2">WriteSoldiersToFormattedFile</a> (const <a class="el" href="main_8cpp.html#a73ff58f0a46ec99d2d99843380061836">SoldiersVector</a> &amp;soldiers, const std::string &amp;filename)</td></tr>
+<tr class="memdesc:a8cd92ccbb3b11298937d8ace19f894c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает отсортированные данные в файл в форматированном виде.  <a href="main_8cpp.html#a8cd92ccbb3b11298937d8ace19f894c2">Подробнее...</a><br /></td></tr>
+<tr class="separator:a8cd92ccbb3b11298937d8ace19f894c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaef9826cf8108c77d45650b9825fccd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aaaef9826cf8108c77d45650b9825fccd">RecordSortTimeAndWriteInFile</a> (auto &amp;&amp;sort, <a class="el" href="main_8cpp.html#a73ff58f0a46ec99d2d99843380061836">SoldiersVector</a> &amp;data, std::vector&lt; double &gt; &amp;arrSortTime, const std::string &amp;out)</td></tr>
+<tr class="memdesc:aaaef9826cf8108c77d45650b9825fccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Измеряет время сортировки и записывает результаты в файл.  <a href="main_8cpp.html#aaaef9826cf8108c77d45650b9825fccd">Подробнее...</a><br /></td></tr>
+<tr class="separator:aaaef9826cf8108c77d45650b9825fccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Главная функция программы.  <a href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Программа для сортировки солдат различными методами и измерения времени сортировки. </p>
+</div><h2 class="groupheader">Типы</h2>
+<a id="a73ff58f0a46ec99d2d99843380061836"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73ff58f0a46ec99d2d99843380061836">&#9670;&nbsp;</a></span>SoldiersVector</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="classSoldier.html">Soldier</a>&gt; <a class="el" href="main_8cpp.html#a73ff58f0a46ec99d2d99843380061836">SoldiersVector</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Функции</h2>
+<a id="a4b49b9c018cfae28889a80998a43d456"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b49b9c018cfae28889a80998a43d456">&#9670;&nbsp;</a></span>Heapify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void Heapify </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>arr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4b9b016d767fa1699e3a7af907a3dfc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b9b016d767fa1699e3a7af907a3dfc7">&#9670;&nbsp;</a></span>HeapSort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;T&gt; HeapSort </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>arr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Пирамидальная (кучей) сортировка. </p>
+<dl class="tparams"><dt>Параметры шаблона</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Тип элементов. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arr</td><td>Вектор элементов для сортировки. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Отсортированный вектор. </dd></dl>
+
+</div>
+</div>
+<a id="ac8be32c66763d07cd60cdefee8eb6f01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8be32c66763d07cd60cdefee8eb6f01">&#9670;&nbsp;</a></span>InsertSort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;T&gt; InsertSort </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>arr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сортировка вставками. </p>
+<dl class="tparams"><dt>Параметры шаблона</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Тип элементов. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arr</td><td>Вектор элементов для сортировки. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Отсортированный вектор. </dd></dl>
+
+</div>
+</div>
+<a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Главная функция программы. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Код завершения программы. </dd></dl>
+
+</div>
+</div>
+<a id="aeb99701acc11d867cad44972b956ace3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb99701acc11d867cad44972b956ace3">&#9670;&nbsp;</a></span>ReadSoldiersFromCSV()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="main_8cpp.html#a73ff58f0a46ec99d2d99843380061836">SoldiersVector</a> ReadSoldiersFromCSV </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Читает данные о солдатах из CSV-файла. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Имя файла. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вектор солдат. </dd></dl>
+
+</div>
+</div>
+<a id="aaaef9826cf8108c77d45650b9825fccd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaef9826cf8108c77d45650b9825fccd">&#9670;&nbsp;</a></span>RecordSortTimeAndWriteInFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RecordSortTimeAndWriteInFile </td>
+          <td>(</td>
+          <td class="paramtype">auto &amp;&amp;&#160;</td>
+          <td class="paramname"><em>sort</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="main_8cpp.html#a73ff58f0a46ec99d2d99843380061836">SoldiersVector</a> &amp;&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>arrSortTime</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Измеряет время сортировки и записывает результаты в файл. </p>
+<dl class="tparams"><dt>Параметры шаблона</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Func</td><td>Тип функции сортировки. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sort</td><td>Функция сортировки. </td></tr>
+    <tr><td class="paramname">data</td><td>Данные для сортировки. </td></tr>
+    <tr><td class="paramname">arrSortTime</td><td>Вектор с измеренным временем сортировки. </td></tr>
+    <tr><td class="paramname">out</td><td>Имя файла для записи результатов. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5780e7f0be68cb56802cdcae99316d51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5780e7f0be68cb56802cdcae99316d51">&#9670;&nbsp;</a></span>SelectSort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;T&gt; SelectSort </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>arr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сортировка выбором. </p>
+<dl class="tparams"><dt>Параметры шаблона</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Тип элементов. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arr</td><td>Вектор элементов для сортировки. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Отсортированный вектор. </dd></dl>
+
+</div>
+</div>
+<a id="a8cd92ccbb3b11298937d8ace19f894c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cd92ccbb3b11298937d8ace19f894c2">&#9670;&nbsp;</a></span>WriteSoldiersToFormattedFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WriteSoldiersToFormattedFile </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="main_8cpp.html#a73ff58f0a46ec99d2d99843380061836">SoldiersVector</a> &amp;&#160;</td>
+          <td class="paramname"><em>soldiers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Записывает отсортированные данные в файл в форматированном виде. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">soldiers</td><td>Вектор солдат. </td></tr>
+    <tr><td class="paramname">filename</td><td>Имя файла для записи. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

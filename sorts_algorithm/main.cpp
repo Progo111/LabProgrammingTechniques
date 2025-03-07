@@ -1,4 +1,9 @@
-#include <iostream>
+/**
+ * @file main.cpp
+ * @brief Программа для сортировки солдат различными методами и измерения времени сортировки.
+ */
+
+ #include <iostream>
 #include <compare>
 #include <string>
 #include <vector>
@@ -14,14 +19,26 @@
 
 namespace plt = matplotlibcpp;
 
+/**
+ * @class Soldier
+ * @brief Класс, представляющий солдата.
+ */
 class Soldier {
 public:
-    std::string m_name;
-    unsigned int m_rank;
-    unsigned int m_companyNumber;
-    unsigned int m_age;
+    std::string m_name; ///< Имя солдата.
+    unsigned int m_rank; ///< Звание солдата.
+    unsigned int m_companyNumber; ///< Номер роты
+    unsigned int m_age; ///< Возраст солдата.
 
+    /**
+     * @brief Конструктор класса Soldier.
+     * @param name Имя солдата.
+     * @param rankStr Звание (строка, преобразуемая в число).
+     * @param companyNumberStr Номер роты (строка, преобразуемая в число).
+     * @param ageStr Возраст (строка, преобразуемая в число).
+     */
     Soldier(std::string& name, std::string& rankStr, std::string& companyNumberStr, std::string& ageStr);
+
     bool operator<(const Soldier&) const;
     bool operator>(const Soldier&) const;
     bool operator<=(const Soldier&) const;
@@ -72,6 +89,12 @@ bool Soldier::operator>=(const Soldier& soldier) const
     return m_companyNumber >= soldier.m_companyNumber;
 }
 
+/**
+ * @brief Сортировка выбором.
+ * @tparam T Тип элементов.
+ * @param arr Вектор элементов для сортировки.
+ * @return Отсортированный вектор.
+ */
 template <typename T>
 std::vector<T> SelectSort(std::vector<T> arr)
 {   
@@ -89,6 +112,12 @@ std::vector<T> SelectSort(std::vector<T> arr)
     return arr;
 }
 
+/**
+ * @brief Сортировка вставками.
+ * @tparam T Тип элементов.
+ * @param arr Вектор элементов для сортировки.
+ * @return Отсортированный вектор.
+ */
 template <typename T>
 std::vector<T> InsertSort(std::vector<T> arr)
 {
@@ -125,6 +154,12 @@ void Heapify(std::vector<T>& arr, size_t size, long index)
     }
 }
 
+/**
+ * @brief Пирамидальная (кучей) сортировка.
+ * @tparam T Тип элементов.
+ * @param arr Вектор элементов для сортировки.
+ * @return Отсортированный вектор.
+ */
 template<typename T>
 std::vector<T> HeapSort(std::vector<T> arr)
 {
@@ -143,6 +178,11 @@ std::vector<T> HeapSort(std::vector<T> arr)
     return arr;
 }
 
+/**
+ * @brief Читает данные о солдатах из CSV-файла.
+ * @param filename Имя файла.
+ * @return Вектор солдат.
+ */
 SoldiersVector ReadSoldiersFromCSV(const std::string& filename) {
     std::ifstream file(filename);
     SoldiersVector soldiers;
@@ -172,7 +212,11 @@ SoldiersVector ReadSoldiersFromCSV(const std::string& filename) {
     return soldiers;
 }
 
-
+/**
+ * @brief Записывает отсортированные данные в файл в форматированном виде.
+ * @param soldiers Вектор солдат.
+ * @param filename Имя файла для записи.
+ */
 void WriteSoldiersToFormattedFile(const SoldiersVector& soldiers, const std::string& filename) {
     std::ofstream file(filename);
 
@@ -193,6 +237,14 @@ void WriteSoldiersToFormattedFile(const SoldiersVector& soldiers, const std::str
     file.close();
 }
 
+/**
+ * @brief Измеряет время сортировки и записывает результаты в файл.
+ * @tparam Func Тип функции сортировки.
+ * @param sort Функция сортировки.
+ * @param data Данные для сортировки.
+ * @param arrSortTime Вектор с измеренным временем сортировки.
+ * @param out Имя файла для записи результатов.
+ */
 void RecordSortTimeAndWriteInFile(
     auto&& sort, 
     SoldiersVector& data,
@@ -207,14 +259,10 @@ void RecordSortTimeAndWriteInFile(
     WriteSoldiersToFormattedFile(sortedVec, out);
 }
 
-void OutTime(std::vector<double> vec)
-{
-    for (auto& i : vec) {
-        std::cout << i << " ";
-    }
-    std::cout << "\n";
-}
-
+/**
+ * @brief Главная функция программы.
+ * @return Код завершения программы.
+ */
 int main() {
     int rangeStep = (100'000 - 100) / 10;
 
